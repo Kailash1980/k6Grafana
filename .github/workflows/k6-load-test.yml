@@ -1,0 +1,20 @@
+name: k6 Load Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  k6-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up k6
+        uses: grafana/setup-k6@v0.3.0
+      - name: Run k6 local-api.js
+        run: k6 run k6Api/local-api.js
+      - name: Run k6 new-test.js
+        run: k6 run k6Api/new-test.js
