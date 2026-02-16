@@ -24,3 +24,7 @@ jobs:
         env:
           K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }}
         run: k6 cloud k6Api/cloud-api-test.js
+      - name: Run k6 cloud-get-test.js in Grafana Cloud
+        env:
+          K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }}
+        run: k6 cloud k6Api/cloud-get-test.js

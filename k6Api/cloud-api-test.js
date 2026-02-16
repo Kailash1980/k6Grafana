@@ -3,8 +3,8 @@ import { sleep } from 'k6';
 import { check } from 'k6'
 
 export const options = {
-  vus: 5,
-  duration: '3s',
+  vus: 3,
+  duration: '2s',
   cloud: {
     // Project: Default project
     projectID: 6677834,
