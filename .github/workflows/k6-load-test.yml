@@ -15,9 +15,9 @@ jobs:
       - name: Install k6
         run: |
           sudo apt-get update
-          sudo apt-get install -y gnupg ca-certificates
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 33C235A34C46AA3FFB293709A328C3A2C3C45C06
-          echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get install -y gnupg ca-certificates curl
+          curl -fsSL https://dl.k6.io/key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
           sudo apt-get update
           sudo apt-get install -y k6
       - name: Run k6 cloud-api-test.js in Grafana Cloud
